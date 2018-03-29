@@ -11,10 +11,11 @@
         $(document).ready(function () {
             $('form').on("submit", function (e){
                 e.preventDefault();
-                var info = $(this).serialize();
+                var info = decodeURIComponent($(this).serialize());
                 var arrInfo = info.split("&");
                 var newLine = "";
                 console.log(info);
+                console.log(decodeURIComponent(info))
                 console.log(arrInfo);
                 for (var i = 0; i <arrInfo.length; i++){
                     var place = arrInfo[i].indexOf("=") + 1;
@@ -24,11 +25,6 @@
                 }
                 console.log(arrInfo);
                 $("#table-bod").append("<tr>" + newLine + "</tr>");
-                // for(var x=0; x<arrInfo.length; x++){
-                //     $("#table-bod").append(arrInfo[x]);
-                // }
-                // var newLine = "<tr><td>"+fname+"</td></tr>"
-                // $("#table-bod").append(newLine);
             });
         });
     </script>
