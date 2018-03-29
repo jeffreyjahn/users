@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type='text/javascript'>
+        $(document).ready(function () {
+            $('form').on("submit", function (e){
+                e.preventDefault();
+                var info = $(this).serialize();
+                var arrInfo = info.split("&");
+                var newLine = "";
+                console.log(info);
+                console.log(arrInfo);
+                for (var i = 0; i <arrInfo.length; i++){
+                    var place = arrInfo[i].indexOf("=") + 1;
+                    arrInfo[i] = arrInfo[i].slice(place);
+                    newLine += "<td>" + arrInfo[i] + "</td>";
+                    
+                }
+                console.log(arrInfo);
+                $("#table-bod").append("<tr>" + newLine + "</tr>");
+                // for(var x=0; x<arrInfo.length; x++){
+                //     $("#table-bod").append(arrInfo[x]);
+                // }
+                // var newLine = "<tr><td>"+fname+"</td></tr>"
+                // $("#table-bod").append(newLine);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <table id="table-head">
+            <thead id="titles">
+                <th id="firstname">First Name</th>
+                <th id="lastname">Last Name</th>
+                <th id="email">Email Address</th>
+                <th id="contact">Contact #</th>
+            </thead>
+            <tbody id="table-bod">
+
+            </tbody>
+        </table>
+
+        <div id="user-input">
+            <h2 id="title">Add User</h2>
+            <form action="" class="input">
+                First Name:
+                <input type="text" name="firstname" placeholder="First Name"><br>
+                Last Name:
+                <input type="text" name="lastname" placeholder="Last Name"><br>
+                Email Address:
+                <input type="text" name="email" placeholder="Email Address"><br>
+                Contact No.:
+                <input type="text" name="contact" placeholder="Phone #"><br>
+                <input type="submit" value="Submit" >
+            </form>
+        </div>
+    </div>
+</body>
+</html>
